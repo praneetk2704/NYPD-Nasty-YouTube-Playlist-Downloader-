@@ -2,6 +2,7 @@
 # Praneet Kumar, B.Tech CSE
 # NIT Silchar, Class of 2019
 
+import winsound
 from pytube import YouTube
 from selenium import webdriver
 import re
@@ -10,7 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-url = "https://www.youtube.com/watch?v=4FB1nO6ckZI&index=1&list=PLKQEL9j11yiUQ5SWdkc6ZT6A1NRoaskst"  # Enter video URL.
+url = "https://www.youtube.com/watch?v=CxM1RYnCYwM&list=PL6gx4Cwl9DGCSvv2N_6jhnEOZnq_419XJ"  # Enter video URL.
 count = 1
 ''' 
 In case the download fails in between due to connectivity issues, update the url with the next file to be downloaded,
@@ -56,6 +57,9 @@ while count >= 1:
         a = re.findall(r'\d+', status)                    # Check if the entire playlist has been downloaded.
         if a[0] == a[1]:
             print("Task completed!!")
+            duration = 2000                               # Play a small beep to alert that the process is complete.
+            freq = 440
+            winsound.Beep(freq, duration)
             driver.quit()
             exit()
 
